@@ -1,0 +1,17 @@
+{
+  "name": "ng-todo-demo",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "sequina <sccaro89@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/sequina/ng-todo-demo",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
