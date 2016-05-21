@@ -1,3 +1,6 @@
 body {
   background-color: bisque;
-}
+  font: 100% Droid Sans; }
+
+h1 {
+  text-align: center; }
