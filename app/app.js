@@ -7,9 +7,8 @@ app.controller("NavCtrl", function($scope) {
 
 app.controller("TodoCtrl", function ($scope) {
   $scope.welcome = "hello";
-  $scope.showListView = false;
+  $scope.showListView = true;
   $scope.newTask = {};
-
   $scope.items = [
     {
       id: 0,
@@ -42,23 +41,24 @@ app.controller("TodoCtrl", function ($scope) {
       dependencies: "hammock, pillow, blanket,cat"
     }
   ];
-
-
-
-  $scope.newItem = function() {
-    console.log("clicked new" );
-    $scope.showListView= false;
-  };
-  $scope.allItem = function() {
-    console.log("clicked all" );
-    $scope.showListView= true;
-  };
   $scope.addNewItem = function() {
+    console.log("hello");
     $scope.newTask.isCompleted = false;
     $scope.newTask.id = $scope.items.length;
     console.log("added new item", $scope.newTask);
     $scope.items.push($scope.newTask);
     $scope.newTask="";
-  }
+  };
+
+
+  $scope.newItem = function() {
+    $scope.showListView= false;
+    console.log("clicked new",$scope.showListView);
+  };
+  $scope.allItem = function() {
+    $scope.showListView= true;
+    console.log("clicked all", $scope.showListView);
+  };
+
 
 });
