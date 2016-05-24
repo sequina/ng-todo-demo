@@ -10,7 +10,8 @@ app.config(function ($routeProvider) {
     templateUrl: 'partials/item-new.html',
     controller:"ItemNewCtrl"
   }).
-  when('/items/details', {
+  //dynamically puts firebase id in url to display on this page anything that has a : in front you can pull that info out
+  when('/items/:itemId', {
     templateUrl: 'partials/item-details.html',
     controller:"ItemViewCtrl"
   }).
