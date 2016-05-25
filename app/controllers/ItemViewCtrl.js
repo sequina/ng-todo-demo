@@ -1,5 +1,5 @@
 app.controller("ItemViewCtrl", function ($scope, $http, $routeParams) {
-  $scope.items = [];
+    $scope.items = [];
     $scope.selectItem = {};
     console.log($routeParams.itemId);
 
@@ -13,6 +13,6 @@ app.controller("ItemViewCtrl", function ($scope, $http, $routeParams) {
               $scope.selectedItem = $scope.items.filter(function(item) {
                 return item.id === $routeParams.itemId;
               }) [0];
-            })
-    })
+            });
+    });
 });
