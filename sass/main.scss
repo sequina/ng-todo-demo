@@ -1,10 +1,10 @@
 $lobster: bisque;
-$font-stack: Droid Sans;
+$font-stack: Volkhov;
 $red: red;
 
 body {
   background-color: $lobster;
-  font: 100% $font-stack;
+  font: $font-stack;
 }
 
 h1{
@@ -15,4 +15,7 @@ h1{
   border: 2px dashed $red;
 }
 
+.search-bar-spacing{
+  margin-bottom: 20px;
+}
 

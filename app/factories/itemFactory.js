@@ -1,30 +1,29 @@
-'use strict';
-app.factory("itemStorage", function($q, $http){
+app.factory("itemStorage", function($q, $http, firbaseURL){
 
   var getItemList = function(){
-    let items = [];
+  var items = [];
     return $q(function(resolve, reject){
-      $http.get("https://todo-ang-app.firebaseio.com/items.json")
+      $http.get( firbaseURL + "items.json")
         .success(function(itemObject){
           var itemCollection = itemObject;
           Object.keys(itemCollection).forEach(function(key){
             itemCollection[key].id=key;
             items.push(itemCollection[key]);
-          })
+          });
           resolve(items);
         })
         .error(function(error){
           reject(error);
         });
-    })
-  }
+    });
+  };
 
   var deleteItem = function(itemId){
     return $q(function(resolve, reject){
       $http
-              .delete(`https://todo-ang-app.firebaseio.com/items/${itemId}.json`)
+              .delete( firbaseURL + `items/${itemId}.json`)
               .success(function(objectFromFirebase){
-                resolve(objectFromFirebase)
+                resolve(objectFromFirebase);
               });
         });
   };
@@ -32,7 +31,7 @@ app.factory("itemStorage", function($q, $http){
   var postNewItem = function(newItem){
         return $q(function(resolve, reject) {
             $http.post(
-                "https://todo-ang-app.firebaseio.com/items.json",
+                firbaseURL + "items.json",
                 JSON.stringify({
                     assignedTo: newItem.assignedTo,
                     dependencies: newItem.dependencies,
@@ -51,6 +50,6 @@ app.factory("itemStorage", function($q, $http){
         });
   };
 
-  return {getItemList:getItemList, deleteItem:deleteItem, postNewItem:postNewItem}
+  return {getItemList:getItemList, deleteItem:deleteItem, postNewItem:postNewItem};
 
 });

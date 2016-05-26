@@ -1,9 +1,12 @@
 body {
   background-color: bisque;
-  font: 100% Droid Sans; }
+  font: Volkhov; }
 
 h1 {
   text-align: center; }
 
 .main-container {
   border: 2px dashed red; }
+
+.search-bar-spacing {
+  margin-bottom: 20px; }
