@@ -1,4 +1,6 @@
 app.controller("ItemNewCtrl", function ($scope, $location, itemStorage) {
+  $scope.title = "New Item";
+  $scope.submitButtonText = "Add New Item";
   $scope.newTask = {
     assignedTo: "",
     dependencies: "",
@@ -6,7 +8,8 @@ app.controller("ItemNewCtrl", function ($scope, $location, itemStorage) {
     isCompleted: false,
     location: "",
     task: "",
-    urgency: ""
+    urgency: "",
+    uid: ""
   };
 
   $scope.addNewItem = function(){
@@ -15,5 +18,5 @@ app.controller("ItemNewCtrl", function ($scope, $location, itemStorage) {
                 console.log(response);
                 $location.url("/items/list");
             });
-    };
+      };
 });
