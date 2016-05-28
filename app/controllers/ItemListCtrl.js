@@ -18,8 +18,8 @@ $scope.inputChange = function(item) {
     itemStorage.updateCompletedStatus(item)
     .then(function(response) {
         console.log("response", response );
-    })
-}
+    });
+};
 
 
 });

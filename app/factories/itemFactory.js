@@ -1,17 +1,18 @@
 app.factory("itemStorage", function($q, $http, firebaseURL, authFactory){
 
   var getItemList = function(){
-  var items = [];
+    var items = [];
+    let user = authFactory.getUser();
     return $q(function(resolve, reject){
-      $http.get( firebaseURL + "items.json")
+      $http.get(`${firebaseURL}items.json?orderBy="uid"&equalTo= "${user.uid}"`)
         .success(function(itemObject){
           var itemCollection = itemObject;
           Object.keys(itemCollection).forEach(function(key){
             itemCollection[key].id=key;
             items.push(itemCollection[key]);
-          });
+              });
             resolve(items);
-          })
+              })
             .error(function(error){
             reject(error);
         });
@@ -20,8 +21,8 @@ app.factory("itemStorage", function($q, $http, firebaseURL, authFactory){
 
   var deleteItem = function(itemId){
     return $q(function(resolve, reject){
-      $http
-              .delete( firebaseURL + `items/${itemId}.json`)
+        $http
+              .delete(firebaseURL + `items/${itemId}.json`)
               .success(function(objectFromFirebase){
                 resolve(objectFromFirebase);
               });
@@ -62,9 +63,10 @@ app.factory("itemStorage", function($q, $http, firebaseURL, authFactory){
           reject(error);
         });
     });
-}
+};
 
    var updateItem = function(itemId, newItem){
+        let user = authFactory.getUser();
         return $q(function(resolve, reject) {
             $http.put(
                 firebaseURL + "items/" + itemId + ".json",

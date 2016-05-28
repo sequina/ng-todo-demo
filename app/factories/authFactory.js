@@ -6,7 +6,7 @@ app.factory("authFactory", function(firebaseURL) {
 
   return {
 
-      // Determine if the client is authenticated through firebase
+  //Determine if the client is authenticated through firebase
 
     isAuthenticated () {
       let authData = ref.getAuth();
@@ -19,7 +19,7 @@ app.factory("authFactory", function(firebaseURL) {
     },
 
 
-      // Authenticate the client via Firebase
+  //Authenticate the client via Firebase
 
     authenticate (credentials) {
       return new Promise((resolve, reject) => {
@@ -38,8 +38,7 @@ app.factory("authFactory", function(firebaseURL) {
       });
     },
 
-
-      // Store each Firebase user's id in the `users` collection
+  //Store each Firebase user's id in the `users` collection
 
     storeUser (authData) {
       let stringifiedUser = JSON.stringify({ uid: authData.uid });
